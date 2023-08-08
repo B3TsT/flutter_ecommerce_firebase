@@ -22,120 +22,124 @@ class ProfileScreen extends StatelessWidget {
         ),
         title: const AppNameTextWidget(fontSize: 20),
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const Visibility(
-            visible: false,
-            child: Padding(
-              padding: EdgeInsets.all(18.0),
-              child: TitlesTextWidget(
-                  label: 'Please login to have unlimited access'),
-            ),
-          ),
-          Visibility(
-            visible: true,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-              child: Row(
-                children: [
-                  Container(
-                    width: 60,
-                    height: 60,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: Theme.of(context).cardColor,
-                      border: Border.all(
-                        color: Theme.of(context).colorScheme.background,
-                        width: 3,
-                      ),
-                      image: const DecorationImage(
-                        image: NetworkImage(
-                            'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png'),
-                        fit: BoxFit.fill,
-                      ),
-                    ),
-                  ),
-                  const SizedBox(width: 10), // 20
-                  const Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      TitlesTextWidget(label: 'Hadi Kachmar'),
-                      SizedBox(height: 6),
-                      SubtitleTextWidget(label: 'Coding.with.hadi@gmail.com')
-                    ],
-                  ),
-                ],
+      body: SingleChildScrollView(
+        physics: const BouncingScrollPhysics(),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Visibility(
+              visible: false,
+              child: Padding(
+                padding: EdgeInsets.all(18.0),
+                child: TitlesTextWidget(
+                    label: 'Please login to have unlimited access'),
               ),
             ),
-          ),
-          const SizedBox(height: 15),
-          Padding(
-            padding: const EdgeInsets.all(14.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Divider(
-                  thickness: 1,
-                ),
-                const SizedBox(height: 10),
-                const TitlesTextWidget(label: 'General'),
-                const SizedBox(height: 10),
-                CustomListTitle(
-                  text: 'All orders',
-                  imagePath: AssetsManager.orderSvg,
-                  function: () {},
-                ),
-                CustomListTitle(
-                  text: 'Wishlist',
-                  imagePath: AssetsManager.wishlistSvg,
-                  function: () {},
-                ),
-                CustomListTitle(
-                  text: 'Viewed recently',
-                  imagePath: AssetsManager.recent,
-                  function: () {},
-                ),
-                CustomListTitle(
-                  text: 'Address',
-                  imagePath: AssetsManager.address,
-                  function: () {},
-                ),
-                const SizedBox(height: 6),
-                const Divider(
-                  thickness: 1,
-                ),
-                const SizedBox(height: 6),
-                const TitlesTextWidget(label: 'Settings'),
-                const SizedBox(height: 10),
-                SwitchListTile(
-                  secondary: Image.asset(
-                    AssetsManager.theme,
-                    height: 34,
-                  ),
-                  title: Text(getIsDarkTheme ? 'Dark Mode' : 'Light Mode'),
-                  value: getIsDarkTheme,
-                  onChanged: (value) {
-                    context.read<ThemeProvider>().setDarkTheme(value);
-                  },
-                ),
-                Center(
-                  child: ElevatedButton.icon(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.red,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30.0),
+            Visibility(
+              visible: true,
+              child: Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                child: Row(
+                  children: [
+                    Container(
+                      width: 60,
+                      height: 60,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Theme.of(context).cardColor,
+                        border: Border.all(
+                          color: Theme.of(context).colorScheme.background,
+                          width: 3,
+                        ),
+                        image: const DecorationImage(
+                          image: NetworkImage(
+                              'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png'),
+                          fit: BoxFit.fill,
+                        ),
                       ),
                     ),
-                    onPressed: () {},
-                    icon: const Icon(Icons.login),
-                    label: const Text('Login'),
-                  ),
-                )
-              ],
+                    const SizedBox(width: 10), // 20
+                    const Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        TitlesTextWidget(label: 'Hadi Kachmar'),
+                        SizedBox(height: 6),
+                        SubtitleTextWidget(label: 'Coding.with.hadi@gmail.com')
+                      ],
+                    ),
+                  ],
+                ),
+              ),
             ),
-          )
-        ],
+            const SizedBox(height: 15),
+            Padding(
+              padding: const EdgeInsets.all(14.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Divider(
+                    thickness: 1,
+                  ),
+                  const SizedBox(height: 10),
+                  const TitlesTextWidget(label: 'General'),
+                  const SizedBox(height: 10),
+                  CustomListTitle(
+                    text: 'All orders',
+                    imagePath: AssetsManager.orderSvg,
+                    function: () {},
+                  ),
+                  CustomListTitle(
+                    text: 'Wishlist',
+                    imagePath: AssetsManager.wishlistSvg,
+                    function: () {},
+                  ),
+                  CustomListTitle(
+                    text: 'Viewed recently',
+                    imagePath: AssetsManager.recent,
+                    function: () {},
+                  ),
+                  CustomListTitle(
+                    text: 'Address',
+                    imagePath: AssetsManager.address,
+                    function: () {},
+                  ),
+                  const SizedBox(height: 6),
+                  const Divider(
+                    thickness: 1,
+                  ),
+                  const SizedBox(height: 6),
+                  const TitlesTextWidget(label: 'Settings'),
+                  const SizedBox(height: 10),
+                  SwitchListTile(
+                    secondary: Image.asset(
+                      AssetsManager.theme,
+                      height: 34,
+                    ),
+                    title: Text(getIsDarkTheme ? 'Dark Mode' : 'Light Mode'),
+                    value: getIsDarkTheme,
+                    onChanged: (value) {
+                      context.read<ThemeProvider>().setDarkTheme(value);
+                    },
+                  ),
+                  Center(
+                    child: ElevatedButton.icon(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.red,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30.0),
+                        ),
+                      ),
+                      onPressed: () {},
+                      icon: const Icon(Icons.login),
+                      label: const Text('Login'),
+                    ),
+                  )
+                ],
+              ),
+            )
+          ],
+        ),
       ),
     );
   }

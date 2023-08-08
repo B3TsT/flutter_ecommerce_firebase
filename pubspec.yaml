@@ -7,6 +7,7 @@ environment:
   sdk: '>=3.0.6 <4.0.0'
 
 dependencies:
+  fancy_shimmer_image: ^2.0.3
   flutter:
     sdk: flutter
   flutter_iconly: ^1.0.2
