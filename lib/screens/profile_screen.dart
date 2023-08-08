@@ -60,13 +60,16 @@ class ProfileScreen extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(width: 10), // 20
-                    const Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        TitlesTextWidget(label: 'Hadi Kachmar'),
-                        SizedBox(height: 6),
-                        SubtitleTextWidget(label: 'Coding.with.hadi@gmail.com')
-                      ],
+                    const Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          TitlesTextWidget(label: 'Hadi Kachmar'),
+                          SizedBox(height: 6),
+                          SubtitleTextWidget(
+                              label: 'Coding.with.hadi@gmail.com')
+                        ],
+                      ),
                     ),
                   ],
                 ),
