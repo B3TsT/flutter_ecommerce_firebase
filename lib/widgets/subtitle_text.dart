@@ -21,12 +21,12 @@ class SubtitleTextWidget extends StatelessWidget {
     return Text(
       label,
       style: TextStyle(
-        fontSize: fontSize,
-        fontStyle: fontStyle,
-        fontWeight: fontWeight,
-        color: color,
-        decoration: textDecoration,
-      ),
+          fontSize: fontSize,
+          fontStyle: fontStyle,
+          fontWeight: fontWeight,
+          color: color,
+          decoration: textDecoration,
+          overflow: TextOverflow.ellipsis),
     );
   }
 }
