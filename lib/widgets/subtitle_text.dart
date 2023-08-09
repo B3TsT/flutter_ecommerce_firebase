@@ -9,6 +9,7 @@ class SubtitleTextWidget extends StatelessWidget {
     this.fontWeight = FontWeight.normal,
     this.color,
     this.textDecoration = TextDecoration.none,
+    this.overflow = TextOverflow.ellipsis,
   });
   final String label;
   final double fontSize;
@@ -16,17 +17,19 @@ class SubtitleTextWidget extends StatelessWidget {
   final FontWeight fontWeight;
   final Color? color;
   final TextDecoration textDecoration;
+  final TextOverflow? overflow;
   @override
   Widget build(BuildContext context) {
     return Text(
       label,
       style: TextStyle(
-          fontSize: fontSize,
-          fontStyle: fontStyle,
-          fontWeight: fontWeight,
-          color: color,
-          decoration: textDecoration,
-          overflow: TextOverflow.ellipsis),
+        fontSize: fontSize,
+        fontStyle: fontStyle,
+        fontWeight: fontWeight,
+        color: color,
+        decoration: textDecoration,
+        overflow: overflow,
+      ),
     );
   }
 }
