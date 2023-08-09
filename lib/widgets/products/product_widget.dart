@@ -1,10 +1,11 @@
-import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_iconly/flutter_iconly.dart';
-import 'package:shops/widgets/subtitle_text.dart';
-import 'package:shops/widgets/title_text.dart';
+import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 
 import '../../consts/app_constanst.dart';
+import '../../screens/inner_screen/product_details.dart';
+import '../subtitle_text.dart';
+import '../title_text.dart';
+import 'heart_btn.dart';
 
 class ProductWidget extends StatefulWidget {
   const ProductWidget({super.key});
@@ -18,8 +19,8 @@ class _ProductWidgetState extends State<ProductWidget> {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return GestureDetector(
-      onTap: () {
-        print('ProductWidget');
+      onTap: () async {
+        await Navigator.pushNamed(context, ProductDetailsScreen.routeName);
       },
       child: Column(
         children: [
@@ -44,12 +45,9 @@ class _ProductWidgetState extends State<ProductWidget> {
                     maxLines: 2,
                   ),
                 ),
-                Flexible(
+                const Flexible(
                   flex: 2,
-                  child: IconButton(
-                    onPressed: () {},
-                    icon: const Icon(IconlyLight.heart),
-                  ),
+                  child: HeartButtonWidget(),
                 ),
               ],
             ),

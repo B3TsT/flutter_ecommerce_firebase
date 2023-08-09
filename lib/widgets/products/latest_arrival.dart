@@ -1,9 +1,10 @@
 import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_iconly/flutter_iconly.dart';
 
 import '../../consts/app_constanst.dart';
+import '../../screens/inner_screen/product_details.dart';
 import '../subtitle_text.dart';
+import 'heart_btn.dart';
 
 class LatestArrivalProductsWidget extends StatelessWidget {
   const LatestArrivalProductsWidget({super.key});
@@ -14,8 +15,8 @@ class LatestArrivalProductsWidget extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: GestureDetector(
-        onTap: () {
-          print('ToDo add the navidate to the product details screen');
+        onTap: () async {
+          await Navigator.pushNamed(context, ProductDetailsScreen.routeName);
         },
         child: SizedBox(
           width: size.width * 0.45,
@@ -45,10 +46,7 @@ class LatestArrivalProductsWidget extends StatelessWidget {
                     FittedBox(
                       child: Row(
                         children: [
-                          IconButton(
-                            onPressed: () {},
-                            icon: const Icon(IconlyLight.heart),
-                          ),
+                          const HeartButtonWidget(),
                           IconButton(
                             onPressed: () {},
                             icon: const Icon(Icons.add_shopping_cart),
