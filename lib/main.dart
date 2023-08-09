@@ -4,6 +4,7 @@ import 'package:shops/root_screen.dart';
 
 import 'consts/app_theme_data.dart';
 import 'providers/theme_provider.dart';
+import 'screens/inner_screen/product_details.dart';
 
 void main() {
   runApp(const MainApp());
@@ -26,6 +27,10 @@ class MainApp extends StatelessWidget {
             context: context,
           ),
           home: const RootScreen(),
+          routes: {
+            ProductDetailsScreen.routeName: (context) =>
+                const ProductDetailsScreen(),
+          },
         );
       }),
     );
