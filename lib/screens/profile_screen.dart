@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:provider/provider.dart';
+import 'package:shops/screens/inner_screen/viewed_recently.dart';
 import 'package:shops/services/assets_manager.dart';
 import 'package:shops/widgets/app_name_text.dart';
 import 'package:shops/widgets/subtitle_text.dart';
 
 import '../providers/theme_provider.dart';
+import '../services/my_app_functions.dart';
 import '../widgets/title_text.dart';
+import 'inner_screen/wishlist.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -93,15 +96,19 @@ class ProfileScreen extends StatelessWidget {
                     function: () {},
                   ),
                   CustomListTitle(
-                    text: 'Wishlist',
-                    imagePath: AssetsManager.wishlistSvg,
-                    function: () {},
-                  ),
+                      text: 'Wishlist',
+                      imagePath: AssetsManager.wishlistSvg,
+                      function: () => Navigator.pushNamed(
+                            context,
+                            WishlistScreen.routeName,
+                          )),
                   CustomListTitle(
-                    text: 'Viewed recently',
-                    imagePath: AssetsManager.recent,
-                    function: () {},
-                  ),
+                      text: 'Viewed recently',
+                      imagePath: AssetsManager.recent,
+                      function: () => Navigator.pushNamed(
+                            context,
+                            ViewedRecenctlyScreen.routeName,
+                          )),
                   CustomListTitle(
                     text: 'Address',
                     imagePath: AssetsManager.address,
@@ -125,20 +132,26 @@ class ProfileScreen extends StatelessWidget {
                       context.read<ThemeProvider>().setDarkTheme(value);
                     },
                   ),
-                  Center(
-                    child: ElevatedButton.icon(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.red,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(30.0),
-                        ),
-                      ),
-                      onPressed: () {},
-                      icon: const Icon(Icons.login),
-                      label: const Text('Login'),
-                    ),
-                  )
                 ],
+              ),
+            ),
+            Center(
+              child: ElevatedButton.icon(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.red,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30.0),
+                  ),
+                ),
+                onPressed: () async {
+                  await MyAppFunctions.showErrorOrWarningDialog(
+                      context: context,
+                      fct: () {},
+                      subTitle: "Are you sure you want to signout",
+                      isError: false);
+                },
+                icon: const Icon(Icons.login),
+                label: const Text('Login'),
               ),
             )
           ],
@@ -161,7 +174,7 @@ class CustomListTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      onTap: () => function,
+      onTap: () => function(),
       title: SubtitleTextWidget(label: text),
       leading: Image.asset(
         imagePath,
